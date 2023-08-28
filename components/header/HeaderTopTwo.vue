@@ -32,6 +32,6 @@ export default {
             correo1: useInstitucionStore().institucion.institucion_correo1,
             admin_link: process.env.APP_ADMIN_API
         };
-    },        
+    },           
 }
 </script>

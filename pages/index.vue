@@ -93,9 +93,14 @@
                 const gacetasUniversidad = await $axios.$get('/api/gacetaunivAll/' + process.env.APP_ID_INSTITUCION)
                 const videosUniversidad = await $axios.$get('/api/VideosAll/' + process.env.APP_ID_INSTITUCION)
                 const LinksUniversidad = await $axios.$get('/api/linksIntExtAll/'+ process.env.APP_ID_INSTITUCION)              
+                
                 const LinksNavUnidadesAdministrativas = LinksUniversidad.filter(link => link.ei_tipo === "NAV_UNID_ADMIN")
-                const LinksMedios = LinksUniversidad.filter(link => link.ei_tipo === "MEDIOS")
-
+                const LinksServiciosVirtuales = LinksUniversidad.filter(link => link.ei_tipo === "NAV_SERV_VIRT")
+                const LinksOfertasAcademicas = LinksUniversidad.filter(link => link.ei_tipo === "NAV_OFER_ACAD")
+                const LinksMediosDeComunicacion = LinksUniversidad.filter(link => link.ei_tipo === "NAV_MED_COM")
+                const LinksInteraccionSocial = LinksUniversidad.filter(link => link.ei_tipo === "NAV_INT_SOC")
+                const LinksMedios = LinksUniversidad.filter(link => link.ei_tipo === "MEDIOS")                
+                
                 /* CLASIFICACION DE GACETAS */
                 gacetasUniversidad.forEach(gac => {
                     if(gac.gaceta_titulo.includes('AUDITORIA')){
@@ -140,6 +145,10 @@
                 useInstitucion.asignarLinksUniversidad(LinksUniversidad)
                 useInstitucion.asignarLinksMedios(LinksMedios)   
                 useInstitucion.asignarLinksUnidadesAdministrativas(LinksNavUnidadesAdministrativas)             
+                useInstitucion.asignarLinksServiciosVirtuales(LinksServiciosVirtuales)             
+                useInstitucion.asignarLinksOfertasAcademicas(LinksOfertasAcademicas)    
+                useInstitucion.asignarLinksMediosDeComunicacion(LinksMediosDeComunicacion)         
+                useInstitucion.asignarLinksInteraccionSocial(LinksInteraccionSocial)
                 return { institucion, imgBannerPrincipal}
             } catch (e) {
                 /*publicaciones de los errores en la consola. */

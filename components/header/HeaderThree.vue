@@ -46,6 +46,12 @@
 
 <script>
     export default {
+        async asyncData({ $axios }) {
+        if(useInstitucionStore().institucion == null){
+            const institucion = await $axios.$get('/api/InstitucionUPEA/'+process.env.APP_ID_INSTITUCION)
+            useInstitucion.asignarInstitucion(institucion.Descripcion)  
+        }
+        },
         components: {
             HeaderTopTwo: () => import("@/components/header/HeaderTopTwo"),
             Category: () => import("@/components/header/Category"),

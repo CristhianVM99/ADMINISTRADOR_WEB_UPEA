@@ -63,7 +63,19 @@
             if(useInstitucionStore().institucion == null){
                 const useInstitucion = useInstitucionStore()                        
                 const institucion = await $axios.$get('/api/InstitucionUPEA/'+process.env.APP_ID_INSTITUCION)
-                useInstitucion.asignarInstitucion(institucion.Descripcion)                   
+                const LinksUniversidad = await $axios.$get('/api/linksIntExtAll/'+ process.env.APP_ID_INSTITUCION)              
+                const LinksNavUnidadesAdministrativas = LinksUniversidad.filter(link => link.ei_tipo === "NAV_UNID_ADMIN")
+                const LinksServiciosVirtuales = LinksUniversidad.filter(link => link.ei_tipo === "NAV_SERV_VIRT")
+                const LinksOfertasAcademicas = LinksUniversidad.filter(link => link.ei_tipo === "NAV_OFER_ACAD")
+                const LinksMediosDeComunicacion = LinksUniversidad.filter(link => link.ei_tipo === "NAV_MED_COM")
+                const LinksInteraccionSocial = LinksUniversidad.filter(link => link.ei_tipo === "NAV_INT_SOC")
+                useInstitucion.asignarInstitucion(institucion.Descripcion)      
+                useInstitucion.asignarLinksUniversidad(LinksUniversidad)
+                useInstitucion.asignarLinksUnidadesAdministrativas(LinksNavUnidadesAdministrativas)                             
+                useInstitucion.asignarLinksServiciosVirtuales(LinksServiciosVirtuales)             
+                useInstitucion.asignarLinksOfertasAcademicas(LinksOfertasAcademicas) 
+                useInstitucion.asignarLinksMediosDeComunicacion(LinksMediosDeComunicacion)         
+                useInstitucion.asignarLinksInteraccionSocial(LinksInteraccionSocial) 
             }
         },
         data() {

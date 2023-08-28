@@ -21,12 +21,20 @@ export const useInstitucionStore = defineStore("Institucion", {
     linksUniversidad: null,       
     linksMedios: null,
     linksNavUnidadesAdministrativas: null,
+    linksServiciosVirtuales: null,
+    linksOfertasAcademicas: null,
+    linksFooterLinks: null,
+    linksMediosDeComunicacion: null,
+    linksInteraccionSocial: null,
 
     /*
 
      INFORMACION DE LA PAGINA PRINCIPAL (MAIN) ==========================================================
 
      */
+
+    /* NAVIGATION */ 
+    texto_nav: 'Dirección de Interacción Social, Bienestar Estudiantil y Deportes',
     /* BANNER:  */
     frase: 'La Universidad del pueblo y para el pueblo',
     imgBannerPrincipal: '',
@@ -182,6 +190,18 @@ export const useInstitucionStore = defineStore("Institucion", {
     },  
     asignarLinksUnidadesAdministrativas(colection){
       this.linksNavUnidadesAdministrativas = colection
-    }
+    },
+    asignarLinksServiciosVirtuales(colection){
+      this.linksServiciosVirtuales= colection
+    },
+    asignarLinksOfertasAcademicas(colección){
+      this.linksOfertasAcademicas= colección
+    },    
+    asignarLinksMediosDeComunicacion(colección){
+      this.linksMediosDeComunicacion = colección
+    },    
+    asignarLinksInteraccionSocial(colección){
+      this.linksInteraccionSocial = colección
+    },    
   }
 });

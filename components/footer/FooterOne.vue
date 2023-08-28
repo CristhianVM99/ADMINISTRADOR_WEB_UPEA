@@ -33,12 +33,16 @@
                         <div class="edu-footer-widget quick-link-widget">
                             <h4 class="widget-title">Mas</h4>
                             <div class="inner">
-                                <ul class="footer-link link-hover">
-                                    <li><n-link to="/contact-us">Repositorio Institucional</n-link></li>
-                                    <li><n-link to="/contact-us">Disbec</n-link></li>
-                                    <li><n-link to="/contact-us">Mi Biblioteca Upea</n-link></li>
-                                    <li><n-link to="/contact-us">Radio Upea</n-link></li>
-                                    <li><n-link to="/contact-us">Tv Upea</n-link></li>
+                                <ul class="footer-link link-hover">                                    
+                                    <li v-for="(link, id_link) in linksServiciosVirtuales" :key="id_link">
+                                        <a target="_blank" :href="link.ei_link">{{ capitalizeFirstLetter(link.ei_nombre) }}</a>
+                                    </li> 
+                                    <li v-for="(link, id_link) in linksInteraccionSocial" :key="id_link">
+                                        <a target="_blank" :href="link.ei_link">{{ capitalizeFirstLetter(link.ei_nombre) }}</a>
+                                    </li>
+                                    <li v-for="(link, id_link) in linksMediosDeComunicacion" :key="id_link">
+                                        <a target="_blank" :href="link.ei_link">{{ capitalizeFirstLetter(link.ei_nombre) }}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -99,14 +103,17 @@
                 facebook: useInstitucionStore().institucion.institucion_facebook,
                 youtube: useInstitucionStore().institucion.institucion_youtube,
                 twitter: useInstitucionStore().institucion.institucion_twitter,
-                /*celular: 12345,
-                telefono: 12345,
-                email: 12345,
-                direccion: 'direccion',
-                facebook: '#',
-                youtube: '#',
-                twitter: '#'*/
+                linksNavUnidadesAdministrativas: useInstitucionStore().linksNavUnidadesAdministrativas,
+                linksServiciosVirtuales: useInstitucionStore().linksServiciosVirtuales,
+                linksOfertasAcademicas: useInstitucionStore().linksOfertasAcademicas,
+                linksMediosDeComunicacion: useInstitucionStore().linksMediosDeComunicacion,
+                linksInteraccionSocial: useInstitucionStore().linksInteraccionSocial,               
             };
+        },
+        methods: {
+            capitalizeFirstLetter(text) {
+              return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+            }
         },
     }
 </script>

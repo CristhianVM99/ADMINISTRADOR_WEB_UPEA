@@ -36,34 +36,38 @@
             <ul class="mega-menu">
                 <li>
                     <h6 class="menu-title">Medios de Comunicación</h6>
-                    <ul class="submenu">
-                        <li><a href="https://fm100.upea.bo/" target="_blank"><img :src="imgRadioUpeaNav" alt=""></a></li>
-                        <li><a href="https://tv.upea.bo/" target="_blank"><img :src="imgUpeaTvNav" alt=""></a></li>
-                        <li><a href="http://www.upeaaldia.com/" target="_blank"><img :src="imgPeriodicoUpeaNav" alt=""></a></li>                                                
+                    <ul class="submenu">                                                
+                        <li v-for="(link, id_link) in linksMediosDeComunicacion" :key="id_link">
+                            <a target="_blank" :href="link.ei_link"><img :src="url_api + '/InstitucionUpea/LinksExternos/' + link.ei_imagen" :alt="link.ei_nombre"></a>
+                        </li> 
                     </ul>
                 </li>
                 <li>
                     <h6 class="menu-title">Ofertas Academicas</h6>
                     <ul class="submenu">
-                        <li><a href="https://solid.upea.bo/" target="_blank">Becas</a></li>
-                        <li><a href="https://posgrado.upea.bo/" target="_blank">Convocatorias Posgrado</a></li>                        
+                        <li v-for="(link, id_link) in linksOfertasAcademicas" :key="id_link">
+                            <a target="_blank" :href="link.ei_link">{{ capitalizeFirstLetter(link.ei_nombre) }}</a>
+                        </li> 
                     </ul>
                 </li>
                 <li>
                     <h6 class="menu-title">Interaccion Social</h6>
-                    <ul class="submenu">
-                        <li><a href="https://solid.upea.bo/" target="_blank"><img :src="imgDisbed" alt="Disbec"></a></li>
-                        <p style="padding-left: 15px;">Dirección de Interacción Social, Bienestar Estudiantil y Deportes</p>
-                        <li><a href="https://solid.upea.bo/" target="_blank">Disbec</a></li>
+                    <ul class="submenu">                        
+                        <li v-for="(link, id_link) in linksInteraccionSocial" :key="id_link">
+                            <a target="_blank" :href="link.ei_link"><img :src="url_api + '/InstitucionUpea/LinksExternos/' + link.ei_imagen" :alt="link.ei_nombre"></a>
+                        </li> 
+                        <p style="padding-left: 15px;">{{ texto_nav }}</p>
+                        <li v-for="(link, id_link) in linksInteraccionSocial" :key="id_link">
+                            <a target="_blank" :href="link.ei_link">{{ capitalizeFirstLetter(link.ei_nombre) }}</a>
+                        </li> 
                     </ul>
                 </li>
                 <li>
                     <h6 class="menu-title">Servicios Virtuales</h6>
                     <ul class="submenu">
-                        <li><a href="http://mibiblioteca.upea.bo/" target="_blank">Biblioteca Virtual</a></li>
-                        <li><a href="https://biblioteca.upea.bo/" target="_blank">Biblioteca Upea</a></li>
-                        <li><a href="http://repositorio.upea.bo/" target="_blank">Repositorio Upea</a></li>
-                        <!-- <li><a href="https://www.sie.upea.bo/l" target="_blank">Sistema de informacion Estudiantil</a></li>                         -->
+                        <li v-for="(link, id_link) in linksServiciosVirtuales" :key="id_link">
+                            <a target="_blank" :href="link.ei_link">{{ capitalizeFirstLetter(link.ei_nombre) }}</a>
+                        </li>  
                     </ul>
                 </li>
             </ul>
@@ -99,7 +103,13 @@
                 imgRadioUpeaNav: useInstitucionStore().imgRadioUpeaNav,
                 imgPeriodicoUpeaNav: useInstitucionStore().imgPeriodicoUpeaNav,
                 imgDisbed: useInstitucionStore().imgDisbed,
-                linksNavUnidadesAdministrativas: useInstitucionStore().linksNavUnidadesAdministrativas
+                linksNavUnidadesAdministrativas: useInstitucionStore().linksNavUnidadesAdministrativas,
+                linksServiciosVirtuales: useInstitucionStore().linksServiciosVirtuales,
+                linksOfertasAcademicas: useInstitucionStore().linksOfertasAcademicas,
+                linksMediosDeComunicacion: useInstitucionStore().linksMediosDeComunicacion,
+                linksInteraccionSocial: useInstitucionStore().linksInteraccionSocial,
+                url_api: process.env.APP_ROOT_API, 
+                texto_nav: useInstitucionStore().texto_nav
             }
         },
         methods: {

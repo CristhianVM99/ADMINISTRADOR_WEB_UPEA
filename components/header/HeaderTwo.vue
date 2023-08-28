@@ -1,4 +1,4 @@
-<template>
+ <template>
     <header class="edu-header header-style-2">
         <HeaderTopTwo v-if="showHeaderTop" />
         <div class="header-mainmenu" :class="{'edu-sticky': isSticky}">
