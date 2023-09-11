@@ -285,7 +285,8 @@
                     console.log(e)
                 }
             },            
-            createdComponent(){
+            createdComponent(){                
+
                 switch (this.$route.params.categoria) {
                     case 'publicaciones':
                             this.cantidad = Object.keys(this.publicaciones).length
@@ -312,7 +313,6 @@
                             const useInstitucion = useInstitucionStore()
                             this.getPublicacionesCarreraAll()   
                             useInstitucion.asignarPublicacionesCarreras(this.publicacionesCarreras)    
-                            console.log("publicaciones",this.publicacionesCarreras)                          
                         break;
                     default:
                         break;

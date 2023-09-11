@@ -8,6 +8,8 @@
         
         <!-- SECCION DE HEADER DE LA PAGINA -->
         <Header showHeaderTop="true" />
+
+        <span>{{visitCount}}</span>
             
         
         <!-- SECCION DE BANNER PRINCIPAL DE LA PAGINA -->
@@ -181,7 +183,8 @@
             return {
                 carrera_colores : useInstitucionStore().institucion.colorinstitucion,
                 color_intermedio: useInstitucionStore().color_intermedio,                   
-                loading: true,             
+                loading: true,  
+                visitCount: useInstitucionStore().visitCount,           
             };
         },
         methods: {            
@@ -199,7 +202,7 @@
                   document.documentElement.style.setProperty('--color-btn',`linear-gradient(to left,${color_primario},#511116,${color_secundario}`)
                 }
               }
-            },   
+            },               
             createdComponent(){
                 this.setColor()                
             }
@@ -208,7 +211,8 @@
             this.createdComponent()
         },
         mounted() {        
-            this.loading= false
+            this.loading= false;        
+            useInstitucionStore().incrementVisitCount()
         },
         head() {
             return {

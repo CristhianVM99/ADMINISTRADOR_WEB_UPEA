@@ -301,7 +301,8 @@
                     console.log(e)
                 }
             }, 
-            createdComponent(){
+            createdComponent(){               
+
                 switch (this.$route.params.categoria) {
                     case 'publicaciones':
                             this.cantidad = Object.keys(this.publicaciones).length

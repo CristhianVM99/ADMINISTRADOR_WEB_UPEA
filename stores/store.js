@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 
 export const useInstitucionStore = defineStore("Institucion", {
   state: () => ({        
+    visitCount: 0,
     url_api: process.env.APP_ROOT_API,
     clave_encryptacion: 'UniversidadPublicaDeElAlto',
     color_intermedio: '#511116',
@@ -203,5 +204,8 @@ export const useInstitucionStore = defineStore("Institucion", {
     asignarLinksInteraccionSocial(colección){
       this.linksInteraccionSocial = colección
     },    
+    incrementVisitCount(){
+      this.visitCount++
+    }
   }
 });

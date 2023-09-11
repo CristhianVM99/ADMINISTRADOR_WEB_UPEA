@@ -81,6 +81,10 @@ export default {
     },
   },
 
+  // serverMiddleware: [
+  //   { path: '/', handler: '~/middleware/visitCounter.js' },
+  // ],  
+
   privateRuntimeConfig: {
     axios: {
       baseURL: process.env.VUE_APP_ROOT_API,

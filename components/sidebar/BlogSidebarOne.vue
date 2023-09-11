@@ -174,9 +174,8 @@
             }
         },
         computed: {
-            cant_publicaciones(){
-                let cantidad = Object.keys(this.publicaciones).length
-                return cantidad
+            cant_publicaciones() {
+                return this.publicaciones ? Object.keys(this.publicaciones).length : 0;
             }
         },
         methods: {

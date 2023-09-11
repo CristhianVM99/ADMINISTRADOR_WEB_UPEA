@@ -202,7 +202,7 @@
             paginateClickCallback( page ) {
                 this.currentPage = Number( page );
             },
-            createdComponent(){                
+            createdComponent(){                              
                 switch (this.$route.params.detalle) {
                     case 'publicaciones':
                         this.publicaciones.forEach(e => {
